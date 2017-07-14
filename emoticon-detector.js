@@ -38,7 +38,12 @@ module.exports = class Emoticon {
                 '(^O^)',
                 '(^o^)',
                 '(^○^)', ')^o^( (*^▽^*)',
-                '(✿◠‿◠)'
+                '(✿◠‿◠)',
+                'オーホッホ'
+            ],
+            angry: [
+                '(＃ﾟДﾟ)',
+                '（ ´Д｀）'
             ],
             smirk: [
                 '( ͡° ͜ʖ ͡°)'
@@ -49,7 +54,38 @@ module.exports = class Emoticon {
             fishy: [
                 '><>',
                 '<*)))‑{',
-                '><(((*>'
+                '><(((*>',
+                '>°)))彡',
+                '(Q))',
+                '><ヨヨ (°))<<',
+                '>°))))彡',
+                '<°)))彡',
+                '>°))彡',
+                '<+))><<',
+                '<*))>=<'
+            ],
+            octopus: [
+                '<コ:彡',
+                'Ｃ:.ミ'
+            ],
+            snake: [
+                '~>°)～～～'
+            ],
+            bat: [
+                '～°·_·°～'
+            ],
+            tadpole: [
+                '(°°)～'
+            ],
+            bomb: [
+                '●～*'
+            ],
+            table_flip: [
+                '(╯°□°）',
+                '╯︵', 
+                '┻━┻',
+                '┬──┬',
+                ' ¯\_(ツ)'
             ],
             cheerleader: [
                 '*\0/*'
@@ -106,7 +142,8 @@ module.exports = class Emoticon {
                 '(・∀・)',
                 '(´∀`)',
                 '(⌒▽⌒)',
-                '(￣ー￣)'
+                '(￣ー￣)',
+                'm9(^Д^)'
             ],
             waving: [
                 '(^^)/~~~',
@@ -166,7 +203,14 @@ module.exports = class Emoticon {
                 '<(_ _)>',
                 '<m(__)m>',
                 'm(__)m',
-                'm(_ _)m'
+                'm(_ _)m',
+                '(｀-´)>'
+            ],
+            irritable: [
+                'ヽ(`Д´)ﾉ'
+            ],
+            peace: [
+                'ヽ(´ー｀)ﾉ'
             ],
             questioning: [
                 '＼(°ロ＼)',
@@ -184,7 +228,8 @@ module.exports = class Emoticon {
                 '>:[',
                 ':{',
                 ':@',
-                '>:('
+                '>:(',
+                '(´；ω；`)'
             ],
             crying: [
                 ':\'‑(',
@@ -263,7 +308,8 @@ module.exports = class Emoticon {
                 '(o.o)',
                 'oO',
                 '（ ﾟ Дﾟ)',
-                '(°◇°)'
+                '(°◇°)',
+                '（　ﾟДﾟ）'
             ],
             dissatisfied: [
                 '(*￣m￣)'
@@ -316,7 +362,8 @@ module.exports = class Emoticon {
                 ':b',
                 'd:',
                 '=p',
-                '>:P'
+                '>:P',
+                '(`･ω･´)'
             ],
             skeptical: [
                 ':‑/',
@@ -353,6 +400,9 @@ module.exports = class Emoticon {
             indecision: [
                 ':‑|',
                 ':|'
+            ],
+            indifferent: [
+                '（　´_ゝ`）'
             ],
             embarassed: [
                 ':$',
@@ -436,13 +486,31 @@ module.exports = class Emoticon {
             study: [
                 '.....φ(・∀・＊)'
             ],
+            bubbles: [
+                '.o○',
+                '○o.'
+            ],
+            cup_of_tea: [
+                '( ^^)',
+                '_U~~',
+                '_旦~~'
+            ],
+            star: [
+                '☆彡',
+                '☆ミ'
+            ],
+            carefree: [
+                '（´∀｀）'
+            ],
             other: [
                 '<(｀^´)>',
                 '!(^^)!',
                 '(~o~)',
                 '(~_~)',
                 '(^^ゞ',
-                '(p_-)'
+                '(p_-)',
+                ':3ミ',
+                '┐(\'～`；)┌'
             ]
 
         }
