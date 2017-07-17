@@ -546,7 +546,7 @@ module.exports = class Moji {
         return /[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}\u{2934}-\u{1f18e}]/ug;
     }
     /**
-     * String to check if it is a graphic emoticon
+     * Checks if the passed text item contains emoji
      * @param {String} emoticon 
      */
     static isEmoji(textItem) {
@@ -558,7 +558,7 @@ module.exports = class Moji {
     }
 
     /**
-     * Checks a text emoticon
+     * Checks if the passed text item contains emoticon
      * @param {String} emoticonText 
      */
     static isEmoticon(emoticonText) {
