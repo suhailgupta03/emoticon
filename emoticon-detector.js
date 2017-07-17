@@ -1,14 +1,6 @@
-const unicode = require("emoji-unicode-map");
 
-module.exports = class Emoticon {
 
-    /**
-     * Gets graphic emoticon map
-     * @return {Object}
-     */
-    static getAll() {
-        return unicode.emoji;
-    }
+module.exports = class Moji {
 
     static EMOTICONS() {
         return {
@@ -82,7 +74,7 @@ module.exports = class Emoticon {
             ],
             table_flip: [
                 '(╯°□°）',
-                '╯︵', 
+                '╯︵',
                 '┻━┻',
                 '┬──┬',
                 ' ¯\_(ツ)'
@@ -516,29 +508,91 @@ module.exports = class Emoticon {
         }
     }
 
+    /**
+     * @return {RegExp}
+     */
+    static get EMOTICON_PATTERN() {
+        let emoticonList = [];
+        for (let category of Moji.EMOTICONS) {
+            emoticonList = [...Moji.EMOTICONS[category], ...emoticonList];
+        }
+        return new RegExp(emoticonList.join('|'), 'g');
+    }
 
-    static get EMOTICON_TEXT() {
-        return /(\:\w+\:|\<[\/\\]?3|[\(\)\\\D|\*\$][\-\^]?[\:\;\=]|[\:\;\=B8][\-\^]?[3DOPp\@\$\*\\\)\(\/\|])(?=\s|[\!\.\?]|$)/;
+    static get EMOJI_PATTERN() {
+        /**
+         * List of unicode blocks
+         * @link https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Pictographs
+         * @link https://en.wikipedia.org/wiki/Supplemental_Symbols_and_Pictographs
+         * @link https://en.wikipedia.org/wiki/Emoticons_(Unicode_block)
+         * @link https://en.wikipedia.org/wiki/Transport_and_Map_Symbols
+         * @link https://en.wikipedia.org/wiki/Miscellaneous_Symbols
+         * @link https://en.wikipedia.org/wiki/Dingbat#Dingbats_Unicode_block
+         * 
+         * Unicode 10.0 represents emoji using 1,182 characters spread across 22 blocks,
+         * of which 1,085 are single emoji characters, 26 are Regional Indicator Symbols 
+         * that combine in pairs to form flag emoji, and 12 (#, * and 0-9) are base 
+         * characters for keycap emoji sequences.
+         * 
+         * 637 of the 768 code points in the Miscellaneous Symbols and Pictographs
+         * block are considered emoji. 134 of the 148 code points in the Supplemental 
+         * Symbols and Pictographs block are considered emoji. All of the 80 code points
+         * in the Emoticons block are considered emoji. 94 of the 107 code points in the 
+         * Transport and Map Symbols block are considered emoji. 80 of the 256 code points 
+         * in the Miscellaneous Symbols block are considered emoji. 33 of the 192 code 
+         * points in the Dingbats block are considered emoji.
+         */
+
+        return /[\u{1f300}-\u{1f5ff}\u{1f900}-\u{1f9ff}\u{1f600}-\u{1f64f}\u{1f680}-\u{1f6ff}\u{2600}-\u{26ff}\u{2700}-\u{27bf}\u{1f1e6}-\u{1f1ff}\u{1f191}-\u{1f251}\u{2934}-\u{1f18e}]/ug;
     }
     /**
      * String to check if it is a graphic emoticon
      * @param {String} emoticon 
      */
-    static isGraphicEmoticon(emoticon) {
-        if (emoticon && Emoticon.getAll()[emoticon])
+    static isEmoji(textItem) {
+        if (textItem && textItem.match(Moji.EMOJI_PATTERN)) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     /**
      * Checks a text emoticon
      * @param {String} emoticonText 
      */
-    static isTextEmoticon(emoticonText) {
-        if (emoticonText && emoticonText.match(Emoticon.EMOTICON_TEXT))
+    static isEmoticon(emoticonText) {
+        if (emoticonText && emoticonText.match(Moji.EMOTICON_PATTERN))
             return true;
         else
             return false;
+    }
+
+    /**
+     * Replaces both emoji and emoticons by default
+     * Returns the identical text if both emoji and emoticon
+     * are false
+     * @param {any} text
+     * @param {Boolean} emoji - Replace all occuring emoji
+     * @param {Boolean} emoticon - Replace all occuring emoticons
+     */
+    static replaceMoji(text, emoji = true, emoticon = true) {
+        if (text) {
+            if (emoji && emoticon) {
+                text = text
+                    .replace(Moji.EMOJI_PATTERN, "")
+                    .replace(Moji.EMOTICON_PATTERN, "");
+            }else if(emoji && !emoticon) {
+                text = text
+                .replace(Moji.EMOJI_PATTERN, "");
+            }else if(!emoji && emoticon) {
+                text = text
+                .replace(Moji.EMOTICON_PATTERN,"");
+            }
+
+            return text;
+        } else {
+            return null;
+        }
     }
 }
