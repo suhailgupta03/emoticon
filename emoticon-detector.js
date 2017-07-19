@@ -511,8 +511,8 @@ module.exports = class Moji {
      */
     static get EMOTICON_PATTERN() {
         let emoticonList = [];
-        for (let category of Moji.EMOTICONS) {
-            emoticonList = [...Moji.EMOTICONS[category], ...emoticonList];
+        for(let [category, emList] of Object.entries(Moji.EMOTICONS)) {
+            emoticonList = [...emList, ...emoticonList];
         }
         return new RegExp(emoticonList.join('|'), 'g');
     }
