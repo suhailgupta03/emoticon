@@ -1,5 +1,3 @@
-
-
 module.exports = class Moji {
 
     static EMOTICONS() {
@@ -549,7 +547,7 @@ module.exports = class Moji {
      * Checks if the passed text item contains emoji
      * @param {String} emoticon 
      */
-    static isEmoji(textItem) {
+    static hasEmoji(textItem) {
         if (textItem && textItem.match(Moji.EMOJI_PATTERN)) {
             return true;
         } else {
@@ -561,7 +559,7 @@ module.exports = class Moji {
      * Checks if the passed text item contains emoticon
      * @param {String} emoticonText 
      */
-    static isEmoticon(emoticonText) {
+    static hasEmoticon(emoticonText) {
         if (emoticonText && emoticonText.match(Moji.EMOTICON_PATTERN))
             return true;
         else
@@ -582,12 +580,12 @@ module.exports = class Moji {
                 text = text
                     .replace(Moji.EMOJI_PATTERN, "")
                     .replace(Moji.EMOTICON_PATTERN, "");
-            }else if(emoji && !emoticon) {
+            } else if (emoji && !emoticon) {
                 text = text
-                .replace(Moji.EMOJI_PATTERN, "");
-            }else if(!emoji && emoticon) {
+                    .replace(Moji.EMOJI_PATTERN, "");
+            } else if (!emoji && emoticon) {
                 text = text
-                .replace(Moji.EMOTICON_PATTERN,"");
+                    .replace(Moji.EMOTICON_PATTERN, "");
             }
 
             return text;

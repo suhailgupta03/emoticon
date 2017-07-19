@@ -1,5 +1,5 @@
 const Moji = require('./emoticon-detector');
 
-console.log(Moji.isEmoji('🤓'));
+console.log(Moji.hasEmoji('🤓'));
 
-console.log(Moji.isEmoticon(':-)'));
+console.log(Moji.hasEmoticon(':-)'));
